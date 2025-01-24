@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>Step 6. スライダーまわりの初期化処理 | CSS グリッドとカスタム・プロパティと JavaScript を使った、スライダーで拡大縮小できる画像一覧</title>
+<link rel="stylesheet" href="common.css" title="固定ヘッダーとナビゲーションを表示">
+<link rel="alternate stylesheet" href="screenshot.css" title="固定ヘッダーとナビゲーションを非表示">
+<style>
+:root {
+  --large-image-size: 100px;
+  --small-image-size: 50px;
+  --grid-min-size: var(--large-image-size);
+  @media (width < 640px) {
+    --grid-min-size: var(--small-image-size);
+  }
+}
+input[type="range"] {
+  vertical-align: middle;
+}
+ul {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: repeat(auto-fill, minmax(var(--grid-min-size, 100px), 1fr));
+  padding: 0;
+  list-style: none;
+}
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+</style>
+<hgroup>
+  <h1>スライダーで拡大縮小できる画像一覧を作る</h1>
+  <p>Step 6. スライダーまわりの初期化処理</p>
+</hgroup>
+<form>
+  <label>画像の最小幅:
+    <input type="range" min="20" max="240" value="100" id="slider">
+  </label>
+  <output id="monitor">100px</output>
+</form>
+<ul id="thumbnails">
+  <li><img alt="" src="https://picsum.photos/480?random=1"></li>
+  <li><img alt="" src="https://picsum.photos/480?random=2"></li>
+  <li><img alt="" src="https://picsum.photos/480?random=3"></li>
+  <li><img alt="" src="https://picsum.photos/480?random=4"></li>
+  <li><img alt="" src="https://picsum.photos/480?random=5"></li>
+  <li><img alt="" src="https://picsum.photos/480?random=6"></li>
+  <li><img alt="" src="https://picsum.photos/480?random=7"></li>
+  <li><img alt="" src="https://picsum.photos/480?random=8"></li>
+  <li><img alt="" src="https://picsum.photos/480?random=9"></li>
+  <li><img alt="" src="https://picsum.photos/480?random=10"></li>
+  <li><img alt="" src="https://picsum.photos/480?random=11"></li>
+  <li><img alt="" src="https://picsum.photos/480?random=12"></li>
+  <li><img alt="" src="https://picsum.photos/480?random=13"></li>
+  <li><img alt="" src="https://picsum.photos/480?random=14"></li>
+  <li><img alt="" src="https://picsum.photos/480?random=15"></li>
+  <li><img alt="" src="https://picsum.photos/480?random=16"></li>
+  <li><img alt="" src="https://picsum.photos/480?random=17"></li>
+  <li><img alt="" src="https://picsum.photos/480?random=18"></li>
+  <li><img alt="" src="https://picsum.photos/480?random=19"></li>
+  <li><img alt="" src="https://picsum.photos/480?random=20"></li>
+</ul>
+<nav class="paging">
+  <ul class="paging-items">
+    <li class="paging-prev"><a href="step5.html">Step 5. に戻る</a></li>
+    <li class="paging-next"><a href="finished.html">Finished! 完成</a></li>
+  </ul>
+</nav>
+<script>
+const propName = "--grid-min-size";
+const slider = document.getElementById("slider");
+const monitor = document.getElementById("monitor");
+const thumbnails = document.getElementById("thumbnails");
+// 初期化処理
+const root = document.documentElement;
+const styles = getComputedStyle(root);
+const initial = styles.getPropertyValue(propName);
+const integer = parseInt(initial);
+slider.value = integer;
+monitor.textContent = initial;
+// スライダーが変更されたらその値で
+// カスタム・プロパティを設定／更新
+slider.addEventListener("input", (e) => {
+  const propValue = `${e.target.value}px`;
+  thumbnails.style.setProperty(propName, propValue);
+  monitor.textContent = propValue;
+});
+</script>

@@ -1,0 +1,12 @@
+body {
+  margin: 1rem;
+}
+hgroup,nav {
+  display: none;
+}
+li {
+  overflow: hidden;
+}
+img {
+  filter: blur(10px);
+}

@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+/*
+ *  common.css
+ *  実装とは直接関係のない共通のスタイル
+ */
+
+body {
+  margin: 0 1rem 4.25rem;
+  line-height: 1.25;
+}
+hgroup {
+  position: sticky;
+  top: 0;
+  margin-bottom: 2rem;
+  padding-top: 1.25rem;
+  border-bottom: 1px solid #767676;
+  background-color: #fff;
+  color: #000;
+  text-align: center;
+  h1 {
+    margin: 0;
+    text-wrap: balance;
+  }
+  p {
+    font-weight: bold;
+  }
+}
+.content {
+  max-width: 40em;
+  margin: auto;
+  line-height: 1.75;
+  h2 {
+    margin: 2rem 0 1rem;
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+  ol {
+    padding-left: 2rem;
+  }
+  ol + p {
+    margin-top: 1.75rem;
+  }
+}
+.paging {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100dvw;
+  background-color: #fff;
+  color: #000;
+}
+.paging-items {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  margin: 0;
+  padding: 1rem;
+  list-style: none;
+}
+.paging-prev {
+  grid-column: 1 / 2;
+  text-align: left;
+  a::before {
+    content: " \261C  ";
+  }
+}
+.paging-next {
+  grid-column: -1 / -2;
+  text-align: right;
+  a::after {
+    content: " \261E  ";
+  }
+}
