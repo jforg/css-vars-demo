@@ -7,6 +7,3 @@ hgroup,nav {
 li {
   overflow: hidden;
 }
-img {
-  filter: blur(10px);
-}
