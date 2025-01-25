@@ -4,6 +4,3 @@ body {
 hgroup,nav {
   display: none;
 }
-li {
-  overflow: hidden;
-}
