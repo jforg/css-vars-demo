@@ -1,5 +1,6 @@
 body {
   margin: 1rem;
+  line-height: 1.25;
 }
 hgroup,nav {
   display: none;
